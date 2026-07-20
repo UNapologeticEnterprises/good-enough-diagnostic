@@ -8,11 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--cream:#F8F6F1;--paper:#FFFFFF;--ink:#0D0D0D;--ink-soft:#2b2b2b;--red:#EA0029;--blue:#000F9F;--gold:#D4A01F;--gold-soft:#F2E8CE;--gold-deep:#A9791C;--tan:#EDE8DF;--border:#D0CCC4;--grey:#6B7280;}
+  :root{--cream:#F8F6F1;--field:#E9B42A;--paper:#FFFFFF;--ink:#0D0D0D;--ink-soft:#2b2b2b;--red:#EA0029;--blue:#000F9F;--gold:#D4A01F;--gold-soft:#F2E8CE;--gold-deep:#A9791C;--tan:#EDE8DF;--border:#D0CCC4;--grey:#6B7280;}
   *{box-sizing:border-box;}
-  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Mulish',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  body{margin:0;background:var(--field);color:var(--ink);font-family:'Mulish',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:660px;margin:0 auto;padding:52px 24px 80px;}
-  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 16px;}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#6E5310;margin:0 0 16px;}
   h1{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:40px;line-height:1.05;margin:0 0 18px;}
   h1 .r{color:var(--red);}
   .dots{display:flex;gap:8px;margin:0 0 26px;}
@@ -39,7 +39,7 @@
   .flips{perspective:1200px;}
   .excard{flex:1;background:var(--gold-soft);border:1px solid #E6D4A6;border-radius:10px;padding:13px 14px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
   .cx{display:block;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 7px;}
-  .flip{flex:1;height:244px;}
+  .flip{flex:1;height:188px;}
   .flip-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;}
   .flip.flipped .flip-inner{transform:rotateY(180deg);}
   .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--gold-soft);border:1px solid #E6D4A6;border-radius:10px;padding:14px 15px;font-size:13px;color:var(--ink-soft);line-height:1.5;overflow:hidden;}
@@ -73,8 +73,8 @@
   .cta .prompt-line{font-size:15px;color:var(--ink-soft);font-style:italic;margin:0 0 16px;}
   .cta a{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:15px 30px;border-radius:9px;}
   .restart{display:inline-block;margin-top:22px;font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
-  .foot{text-align:center;margin-top:40px;font-size:12.5px;color:var(--grey);}
-  @media(max-width:560px){h1{font-size:32px;}.wrap{padding:38px 18px 60px;}.exrow{flex-direction:column;}.flip{height:180px;}}
+  .foot{text-align:center;margin-top:40px;font-size:12.5px;color:#6E5310;}
+  @media(max-width:560px){h1{font-size:32px;}.wrap{padding:38px 18px 60px;}.exrow{flex-direction:column;}.flip{height:150px;}}
   .choiceq{display:block;margin-top:9px;font-weight:700;color:var(--ink);}
   .response{background:#fff;border:1px solid #EBD9A6;border-left:5px solid #E9B42A;border-radius:11px;padding:16px 18px;margin:0 0 22px;}
   .response .rlabel{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9791C;margin:0 0 8px;}
@@ -119,7 +119,7 @@
       <p class="frame">Start here, because almost every gap gets blamed on everything but this.</p>
       <div class="qcard">
         <p class="qlabel">Ask yourself</p>
-        <p class="qtext">Would at least three different people, from someone junior to someone senior, describe what "excellent" looks like in their role the same way?</p>
+        <p class="qtext">Would at least three different people (someone junior, someone senior, someone thriving, someone checked out) describe what "excellent" looks like in their role the same way?</p>
       </div>
       <p class="exhead">What a clear standard actually looks like:</p>
       <div class="exrow">
@@ -139,7 +139,7 @@
   <div class="screen" id="s-standard-test">
     <div class="card">
       <p class="tag">Standards · Go find out</p>
-      <p class="frame">Then don't guess. Go and find out this week. Ask at least three different people, separately, from someone junior to someone senior.</p>
+      <p class="frame">Then don't guess. Go and find out this week. Ask at least three different people separately: someone junior, someone senior, someone thriving, someone checked out.</p>
       <div class="qcard">
         <p class="qlabel">Ask them, word for word</p>
         <p class="qtext">"Describe what excellent looks like in your role."</p>
