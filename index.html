@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--cream:#F8F6F1;--paper:#FFFFFF;--ink:#0D0D0D;--ink-soft:#2b2b2b;--red:#EA0029;--gold:#D4A01F;--gold-soft:#F2E8CE;--gold-deep:#A9791C;--tan:#EDE8DF;--border:#D0CCC4;--grey:#6B7280;}
+  :root{--cream:#F8F6F1;--paper:#FFFFFF;--ink:#0D0D0D;--ink-soft:#2b2b2b;--red:#EA0029;--blue:#000F9F;--gold:#D4A01F;--gold-soft:#F2E8CE;--gold-deep:#A9791C;--tan:#EDE8DF;--border:#D0CCC4;--grey:#6B7280;}
   *{box-sizing:border-box;}
   body{margin:0;background:var(--cream);color:var(--ink);font-family:'Mulish',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:660px;margin:0 auto;padding:52px 24px 80px;}
@@ -23,28 +23,38 @@
   @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
   .card{background:var(--paper);border:1px solid var(--border);border-radius:16px;padding:30px 26px;}
   .tag{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;color:var(--red);margin:0 0 14px;text-transform:uppercase;}
-  .prompt{font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:23px;line-height:1.3;color:var(--ink);margin:0 0 12px;}
-  .hint{font-size:14.5px;color:var(--grey);margin:0 0 14px;}
-  .exactwords{background:var(--ink);color:#efece6;border-radius:10px;padding:14px 18px;font-size:15px;margin:0 0 14px;}
-  .exactwords b{color:#fff;}
+  .frame{font-size:16px;color:var(--ink-soft);margin:0 0 16px;}
+  /* QUESTION CARD (consistent, Klein blue) */
+  .qcard{background:#F3F4FC;border:1px solid #C9CDF2;border-left:5px solid var(--blue);border-radius:12px;padding:18px 20px;margin:0 0 18px;}
+  .qlabel{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:0 0 9px;}
+  .qtext{font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:21px;line-height:1.3;color:var(--blue);margin:0;}
+  .qsub{font-size:14px;color:var(--ink-soft);margin:12px 0 0;}
+  .hint{font-size:14.5px;color:var(--grey);margin:0 0 16px;}
   .listen{background:var(--tan);border-radius:10px;padding:13px 16px;font-size:14px;color:var(--ink-soft);margin:0 0 22px;}
   .listen b{color:var(--ink);}
+  .note{border-left:3px solid var(--red);padding:2px 0 2px 15px;font-size:14.5px;color:var(--ink-soft);margin:0 0 18px;}
+  .note b{color:var(--ink);}
+  .exhead{font-weight:700;color:var(--ink);font-size:14px;margin:0 0 10px;}
+  .exrow{display:flex;gap:10px;margin:0 0 20px;}
+  .flips{perspective:1200px;}
+  .excard{flex:1;background:var(--gold-soft);border:1px solid #E6D4A6;border-radius:10px;padding:13px 14px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
+  .cx{display:block;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 7px;}
+  .flip{flex:1;height:216px;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;}
+  .flip.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--gold-soft);border:1px solid #E6D4A6;border-radius:10px;padding:14px 15px;font-size:13px;color:var(--ink-soft);line-height:1.5;overflow:hidden;}
+  .flip-back{transform:rotateY(180deg);}
   .choices{display:flex;flex-direction:column;gap:12px;}
   .choice{width:100%;text-align:left;background:var(--cream);border:1.5px solid var(--border);border-radius:11px;padding:16px 20px;font-family:'Mulish',sans-serif;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s;}
   .choice:hover{border-color:var(--red);background:#fff;transform:translateY(-1px);}
   .intro p{font-size:16px;color:var(--ink-soft);margin:0 0 15px;}
   .intro .names{color:var(--ink);font-weight:700;}
   .intro .three{font-family:'Josefin Sans',sans-serif;font-weight:700;color:var(--red);}
+  .intro .honest{background:#F3F4FC;border-left:5px solid var(--blue);border-radius:10px;padding:14px 18px;color:var(--ink-soft);font-size:15.5px;}
   .begin{margin-top:24px;display:inline-block;background:var(--red);color:#fff;border:none;border-radius:9px;padding:15px 34px;font-family:inherit;font-size:15.5px;font-weight:700;cursor:pointer;}
   .verdict{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:0 0 10px;}
   .result h2{font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:27px;line-height:1.15;margin:0 0 16px;}
   .result p{font-size:16px;color:var(--ink-soft);margin:0 0 16px;}
-  .note{border-left:3px solid var(--red);padding:2px 0 2px 15px;font-size:14.5px;color:var(--ink-soft);margin:0 0 18px;}
-  .note b{color:var(--ink);}
-  .exhead{font-weight:700;color:var(--ink);font-size:14px;margin:0 0 10px;}
-  .exrow{display:flex;gap:10px;margin:0 0 20px;}
-  .excard{flex:1;background:var(--gold-soft);border:1px solid #E6D4A6;border-radius:10px;padding:13px 14px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
-  .excard .cx{display:block;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 7px;}
   .step{background:var(--ink);border-radius:13px;padding:20px 22px;margin:18px 0;}
   .step .label{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 8px;}
   .step p{color:#efece6;font-size:15px;margin:0 0 12px;}.step p:last-child{margin:0;}
@@ -64,15 +74,7 @@
   .cta a{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:15px 30px;border-radius:9px;}
   .restart{display:inline-block;margin-top:22px;font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
   .foot{text-align:center;margin-top:40px;font-size:12.5px;color:var(--grey);}
-  @media(max-width:560px){h1{font-size:32px;}.wrap{padding:38px 18px 60px;}.exrow{flex-direction:column;}}
-  .flips{perspective:1200px;}
-  .flip{flex:1;height:216px;}
-  .flip-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;}
-  .flip.flipped .flip-inner{transform:rotateY(180deg);}
-  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--gold-soft);border:1px solid #E6D4A6;border-radius:10px;padding:14px 15px;font-size:13px;color:var(--ink-soft);line-height:1.5;overflow:hidden;}
-  .flip-back{transform:rotateY(180deg);}
-  .flip-face .cx{display:block;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 7px;}
-  @media(max-width:560px){.flips{flex-direction:column;}.flip{height:150px;}}
+  @media(max-width:560px){h1{font-size:32px;}.wrap{padding:38px 18px 60px;}.exrow{flex-direction:column;}.flip{height:150px;}}
 </style>
 </head>
 <body>
@@ -84,39 +86,52 @@
     <h1>Find where to <span class="r">start</span>.</h1>
     <div class="card intro">
       <p>The cost of good enough you just calculated isn't random. It's coming from one of three places, and only one of them is really yours to start with.</p>
-      <p>I've spent 30+ years inside real operations, from hospitality and theatre to a billion-dollar brand's expansion across two countries, and this same gap shows up everywhere. It almost always traces to one of three things: your <span class="names">standards</span>, your team's <span class="names">beliefs</span>, or the <span class="names">conditions</span> around them. <span class="three">Just three.</span></p>
-      <p>They work together, so we take them one at a time, in order, and stop at the first one that's actually yours. Two minutes, start to finish.</p>
-      <p>One thing going in: this is going to feel almost too simple. The tools you've been handed to fix this are usually complicated; that's how they justify themselves. The simplicity here isn't a shortcut. It's the whole point. It's what's left once you strip away everything that doesn't work.</p>
+      <p>Over 30+ years I've worked across industries most people never combine, from theatre and hospitality to leading a billion-dollar brand's expansion across two countries. The same gap shows up in every one of them, and it almost always traces to one of three things: your <span class="names">standards</span>, your team's <span class="names">beliefs</span>, or the <span class="names">conditions</span> around them. <span class="three">Just three.</span></p>
+      <p>They work together, so we take them one at a time, in order, and stop at the first one that's actually yours. A few minutes, start to finish.</p>
+      <p class="honest">One condition for this to work: be completely honest with yourself. Not the version you'd give in a meeting, but what's objectively true when no one is looking. This is only as sharp as the honesty you bring to it.</p>
+      <p style="margin-top:15px;">And it's going to feel almost too simple. The tools you've been handed to fix this are usually complicated; that's how they justify themselves. The simplicity here isn't a shortcut. It's the whole point. It's what's left once you strip away everything that doesn't work.</p>
       <button class="begin" onclick="begin()">Begin →</button>
     </div>
   </div>
 
   <div class="dots" id="dots" style="display:none;"><span class="dot" id="d1"></span><span class="dot" id="d2"></span><span class="dot" id="d3"></span></div>
 
-  <!-- STANDARDS Q -->
+  <!-- STANDARDS Q (self gut-check) -->
   <div class="screen" id="s-standard">
     <div class="card">
       <p class="tag">Standards</p>
-      <p class="prompt">Could three different people (someone junior and someone senior, someone thriving and someone checked out) each describe what "excellent" looks like in their role, and would those answers line up?</p>
-      <p class="hint">Ask them separately, in these exact words: "Describe what excellent looks like in your role." Then say nothing.</p>
-      <p class="listen"><b>What you're listening for:</b> the same picture, described concretely. Three matching, specific answers means the bar is real. Three vague or conflicting ones ("good work," "hustle") mean it's a preference dressed up as a standard. And "it's written down, we've trained on it" doesn't count. A poster on the wall isn't a standard in their hands.</p>
+      <p class="frame">Start here, because almost every gap gets blamed on everything but this.</p>
+      <div class="qcard">
+        <p class="qlabel">Ask yourself</p>
+        <p class="qtext">Would at least three different people, from someone junior to someone senior, describe what "excellent" looks like in their role the same way?</p>
+      </div>
+      <p class="exhead">What a clear standard actually looks like:</p>
+      <div class="exrow">
+        <div class="excard"><span class="cx">Hospitality</span>"Great service" is a preference. "A guest is greeted within ten seconds, by name where we know it" is a standard.</div>
+        <div class="excard"><span class="cx">Office</span>"Good analysis" is a preference. "Every report opens with the decision it's recommending" is a standard.</div>
+        <div class="excard"><span class="cx">Multi-unit</span>"Keep it clean" is a preference. "The ten-point close every location runs, the same way, every night" is a standard.</div>
+      </div>
+      <p class="note"><b>The trap:</b> "They know it, it's written down, we've trained on it." Written, recited, reviewed is a document that's been presented. It isn't a standard people could reproduce with the page taken away. If they couldn't, you have a poster, not a standard. Matching, specific answers means the bar is real; vague or conflicting ones ("good work," "hustle") mean it's a preference in disguise.</p>
       <div class="choices">
-        <button class="choice" onclick="pick('standard','pass')">Yes, they'd broadly match.</button>
+        <button class="choice" onclick="pick('standard','pass')">Yes, they'd line up.</button>
         <button class="choice" onclick="pick('standard','fail')">Honestly, I'm not sure they would.</button>
       </div>
     </div>
   </div>
 
-  <!-- STANDARDS intermediary -->
+  <!-- STANDARDS go find out -->
   <div class="screen" id="s-standard-test">
     <div class="card">
       <p class="tag">Standards · Go find out</p>
-      <p class="prompt">Then don't guess. Go and find out.</p>
-      <p class="hint">This week, ask three different people (someone junior, someone senior, someone thriving, someone checked out), separately. Use these exact words:</p>
-      <p class="exactwords"><b>"Describe what excellent looks like in your role."</b><br>Then say nothing. Let the silence do the work.</p>
-      <p class="listen"><b>Listen for</b> whether they describe the same thing, concretely: not "good work," but the actual behaviours. When you have your answer, come back and pick up here:</p>
+      <p class="frame">Then don't guess. Go and find out this week. Ask at least three different people, separately, from someone junior to someone senior.</p>
+      <div class="qcard">
+        <p class="qlabel">Ask them, word for word</p>
+        <p class="qtext">"Describe what excellent looks like in your role."</p>
+        <p class="qsub">Then say nothing. Let the silence do the work.</p>
+      </div>
+      <p class="hint">Listen for whether they describe the same thing, concretely: not "good work," but the actual behaviours. When you have your answer, come back and pick up here:</p>
       <div class="choices">
-        <button class="choice" onclick="pick('standardtest','pass')">They matched. My bar's clear.</button>
+        <button class="choice" onclick="pick('standardtest','pass')">They lined up. My bar's clear.</button>
         <button class="choice" onclick="pick('standardtest','fail')">They didn't line up.</button>
       </div>
     </div>
@@ -126,8 +141,12 @@
   <div class="screen" id="s-belief">
     <div class="card">
       <p class="tag">Beliefs</p>
-      <p class="prompt">The real question isn't whether they can. It's whether they do when no one is watching. Picture someone who reaches beyond good enough when it costs them, in a moment no one would ever catch them skipping. What happens to that person on your team?</p>
+      <p class="frame">The bar's clear, and they can do the work. The only question left is whether they do it when no one is watching.</p>
       <p class="hint">(One gut-check first: if some genuinely couldn't do this even with your help, that's a skill gap, not belief. A training conversation, and a different fix.)</p>
+      <div class="qcard">
+        <p class="qlabel">Ask yourself</p>
+        <p class="qtext">When someone reaches beyond good enough and it costs them, in a moment no one would ever catch them skipping, what happens to that person on your team?</p>
+      </div>
       <p class="exhead">The kind of moment I mean:</p>
       <div class="exrow flips">
         <div class="flip" id="f1"><div class="flip-inner">
@@ -143,7 +162,7 @@
           <div class="flip-face flip-back"><span class="cx">The easy version</span>A customer would never know the difference either way. Give them the better version, or the easy one?</div>
         </div></div>
       </div>
-      <p class="listen"><b>What you're looking for:</b> whether reaching beyond good enough gets noticed and valued, or whether it costs the person and changes nothing. Their honest read of that is what tells them whether their best is worth giving.</p>
+      <p class="listen"><b>What you're looking for:</b> whether reaching beyond good enough gets noticed and valued, or whether it costs the person and changes nothing. Your honest read of that is the answer.</p>
       <div class="choices">
         <button class="choice" onclick="pick('belief','pass')">They're seen and celebrated.</button>
         <button class="choice" onclick="pick('belief','fail')">Overlooked, or honestly I'm not sure.</button>
@@ -151,19 +170,12 @@
     </div>
   </div>
 
-  <!-- RESULT: STANDARDS -->
+  <!-- RESULT: STANDARDS (lean) -->
   <div class="screen result" id="r-standard">
     <div class="card">
       <p class="verdict">Start here · Standards</p>
       <h2>This is a standards problem.</h2>
-      <p>If those answers wouldn't line up, the bar isn't set. It's a preference no one else can see, let alone hit. And nothing below this is even readable until it's clear.</p>
-      <p class="note"><b>The trap to watch:</b> "They know it. It's written down, we've trained on it, we review it." Written, recited, reviewed is a document that's been presented. It isn't the same as a standard people could reproduce with the page taken away. If they couldn't, you have a poster, not a standard.</p>
-      <p class="exhead">What it looks like:</p>
-      <div class="exrow">
-        <div class="excard"><span class="cx">Hospitality</span>"Great service" is a preference. "A guest is greeted within ten seconds, by name where we know it" is a standard.</div>
-        <div class="excard"><span class="cx">Office</span>"Good analysis" is a preference. "Every report opens with the decision it's recommending" is a standard.</div>
-        <div class="excard"><span class="cx">Multi-unit</span>"Keep it clean" is a preference. "The ten-point close every location runs, the same way, every night" is a standard.</div>
-      </div>
+      <p>If the answers don't line up, the bar isn't set. It's a preference no one else can see, let alone hit. And nothing below this is even readable until it's clear.</p>
       <div class="step">
         <p class="label">Your next most powerful step</p>
         <p>Here's the part most leaders get wrong: they write a cleaner version and hand it down. Do that and it lands as one more thing imposed on people, and an imposed standard buys you compliance at best.</p>
@@ -174,7 +186,7 @@
       <button class="expandbtn" onclick="toggleExp(this)">See a preview of the other two ↓</button>
       <div class="expand">
         <h4>Beliefs</h4><p>They can do it. Do they believe their best matters, or have they learned that good enough and their best land in the same place?</p>
-        <h4>Conditions</h4><p>What in the operation is teaching them whether to care? Cut what erodes it; protect what builds it.</p>
+        <h4>Conditions</h4><p>What in the operation is teaching them whether to care? Cut what erodes it; grow what builds it.</p>
       </div>
       <div class="cta">
         <p class="prompt-line">Setting a standard that holds is one of the most critical, and most misread, moves in an operation. It's a lot of what I do with leadership teams: a keynote, a masterclass, or a longer advisory engagement.</p>
@@ -214,7 +226,12 @@
     <div class="card">
       <p class="verdict">The good-news answer · Conditions</p>
       <h2>Your people are reaching. Now protect it.</h2>
-      <p>Good, the belief's there. Now the uncomfortable question: why? If the answer is "I have great people," that's not an answer. It's luck. And luck doesn't transfer, promote, or scale. It leaves the day that person does, and takes the unnamed system with it.</p>
+      <p>The belief is there. So the question that matters now is why.</p>
+      <div class="qcard">
+        <p class="qlabel">Ask yourself</p>
+        <p class="qtext">Why are my people reaching beyond good enough? What, specifically, is making them do it?</p>
+      </div>
+      <p>If your honest answer is "I have great people," that's not an answer. It's luck. And luck doesn't transfer, promote, or scale. It leaves the day that person does, and takes the unnamed system with it.</p>
       <p class="exhead">Luck vs a mechanism you could hand to another team:</p>
       <div class="exrow">
         <div class="excard"><span class="cx">Developing people</span>"We hire well" (luck). "Every new hire shadows our best for two weeks, then keeps a mentor to go to through their first 90 days" (a mechanism).</div>
@@ -223,8 +240,7 @@
       </div>
       <div class="step">
         <p class="label">Your next most powerful step</p>
-        <p>Get specific about what you love in how this team works, and why it happens. Not "they're great," but the actual thing you'd point to and say: "This. This is what's working, and here is exactly what produces it."</p>
-        <p>If you can say that in one clear sentence, you can teach it. If you can't yet, that's the work: find the words, hand them to one other team, and watch whether it travels. What you can name, you can repeat and protect. What you can't, you lose the day that person walks out.</p>
+        <p>Say the answer out loud, in one sentence, the way you'd hand it to a brand-new manager. If you can't finish the sentence, that's the work: make the invisible thing sayable, then repeatable. Give it to one other team and watch whether it travels. If it does, you have a system. If it doesn't, you've found the next thing to build.</p>
       </div>
       <div class="carry"><b class="lbl">Take this with you</b>Next time the gap shows up anywhere, you have three questions: is this a standards problem, a belief problem, or a <span class="w">conditions</span> problem? It starts with standards; stop at the first one that's yours.</div>
       <div class="cta">
