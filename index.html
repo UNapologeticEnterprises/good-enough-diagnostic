@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--cream:#F8F6F1;--field:#E9B42A;--paper:#FFFFFF;--ink:#0D0D0D;--ink-soft:#2b2b2b;--red:#EA0029;--blue:#000F9F;--gold:#D4A01F;--gold-soft:#F2E8CE;--gold-deep:#A9791C;--tan:#EDE8DF;--border:#D0CCC4;--grey:#6B7280;}
+  :root{--cream:#F8F6F1;--field:#F8F6F1;--paper:#FFFFFF;--ink:#0D0D0D;--ink-soft:#2b2b2b;--red:#EA0029;--blue:#000F9F;--gold:#D4A01F;--gold-soft:#F2E8CE;--gold-deep:#A9791C;--tan:#EDE8DF;--border:#D0CCC4;--grey:#6B7280;}
   *{box-sizing:border-box;}
   body{margin:0;background:var(--field);color:var(--ink);font-family:'Mulish',-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:660px;margin:0 auto;padding:52px 24px 80px;}
@@ -74,7 +74,7 @@
   .cta a{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:15px 30px;border-radius:9px;}
   .restart{display:inline-block;margin-top:22px;font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
   .foot{text-align:center;margin-top:40px;font-size:12.5px;color:#6E5310;}
-  @media(max-width:560px){h1{font-size:32px;}.wrap{padding:38px 18px 60px;}.exrow{flex-direction:column;}.flip{height:150px;}}
+  @media(max-width:560px){h1{font-size:32px;}.wrap{padding:38px 18px 60px;}.exrow{flex-direction:column;}.flip{flex:none;height:148px;}}
   .choiceq{display:block;margin-top:9px;font-weight:700;color:var(--ink);}
   .response{background:#fff;border:1px solid #EBD9A6;border-left:5px solid #E9B42A;border-radius:11px;padding:16px 18px;margin:0 0 22px;}
   .response .rlabel{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9791C;margin:0 0 8px;}
@@ -91,11 +91,17 @@
     .step{background:#fff!important;border:1px solid #000;}
     .step p,.step .label,.step .say{color:#000!important;}
   }
+  .bandhead{background:#E9B42A;width:100%;}
+  .bandhead .inner{max-width:660px;margin:0 auto;padding:20px 24px;}
+  .bandhead .eyebrow{margin:0;color:#5c4712;}
+  .result .verdict{color:var(--red);font-size:14px;letter-spacing:.08em;}
+  .result .qlabel{color:var(--blue);}
+  .result .qtext{color:var(--blue);}
 </style>
 </head>
 <body>
+<div class="bandhead"><div class="inner"><p class="eyebrow">Davide Di Giorgio — Good Enough</p></div></div>
 <div class="wrap">
-  <p class="eyebrow">Davide Di Giorgio — Good Enough</p>
 
   <!-- INTRO -->
   <div class="screen active" id="s-intro">
