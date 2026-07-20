@@ -39,7 +39,7 @@
   .flips{perspective:1200px;}
   .excard{flex:1;background:var(--gold-soft);border:1px solid #E6D4A6;border-radius:10px;padding:13px 14px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
   .cx{display:block;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 7px;}
-  .flip{flex:1;height:216px;}
+  .flip{flex:1;height:244px;}
   .flip-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;}
   .flip.flipped .flip-inner{transform:rotateY(180deg);}
   .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--gold-soft);border:1px solid #E6D4A6;border-radius:10px;padding:14px 15px;font-size:13px;color:var(--ink-soft);line-height:1.5;overflow:hidden;}
@@ -74,7 +74,23 @@
   .cta a{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:15px 30px;border-radius:9px;}
   .restart{display:inline-block;margin-top:22px;font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
   .foot{text-align:center;margin-top:40px;font-size:12.5px;color:var(--grey);}
-  @media(max-width:560px){h1{font-size:32px;}.wrap{padding:38px 18px 60px;}.exrow{flex-direction:column;}.flip{height:150px;}}
+  @media(max-width:560px){h1{font-size:32px;}.wrap{padding:38px 18px 60px;}.exrow{flex-direction:column;}.flip{height:180px;}}
+  .choiceq{display:block;margin-top:9px;font-weight:700;color:var(--ink);}
+  .response{background:#fff;border:1px solid #EBD9A6;border-left:5px solid #E9B42A;border-radius:11px;padding:16px 18px;margin:0 0 22px;}
+  .response .rlabel{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A9791C;margin:0 0 8px;}
+  .response p{font-size:15px;color:var(--ink-soft);margin:0;}
+  .lm{display:block;font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;margin:9px 0 1px;}
+  .lm.luck{color:var(--grey);}
+  .lm.mech{color:var(--ink);}
+  .print-btn{display:inline-block;margin-top:16px;margin-right:18px;font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;text-decoration:underline;font-family:inherit;}
+  @media print{
+    body{background:#fff;}
+    .dots,.choices,.begin,.restart,.expandbtn,.print-btn,.cta a,.foot,.eyebrow,.flips{display:none!important;}
+    .screen:not(.active){display:none!important;}
+    .card{border:none;}
+    .step{background:#fff!important;border:1px solid #000;}
+    .step p,.step .label,.step .say{color:#000!important;}
+  }
 </style>
 </head>
 <body>
@@ -86,9 +102,9 @@
     <h1>Find where to <span class="r">start</span>.</h1>
     <div class="card intro">
       <p>The cost of good enough you just calculated isn't random. It's coming from one of three places, and only one of them is really yours to start with.</p>
-      <p>Over 30+ years I've worked across industries most people never combine, from theatre and hospitality to leading a billion-dollar brand's expansion across two countries. The same gap shows up in every one of them, and it almost always traces to one of three things: your <span class="names">standards</span>, your team's <span class="names">beliefs</span>, or the <span class="names">conditions</span> around them. <span class="three">Just three.</span></p>
+      <p>Over 30+ years I've worked across industries most people never combine, from theatre, hospitality, and education to leading a billion-dollar brand's expansion across two countries. The same gap shows up in every one of them, and it almost always traces to one of three things: your <span class="names">standards</span>, your team's <span class="names">beliefs</span>, or the <span class="names">conditions</span> around them. <span class="three">Just three.</span></p>
       <p>They work together, so we take them one at a time, in order, and stop at the first one that's actually yours. A few minutes, start to finish.</p>
-      <p class="honest">One condition for this to work: be completely honest with yourself. Not the version you'd give in a meeting, but what's objectively true when no one is looking. This is only as sharp as the honesty you bring to it.</p>
+      <p class="honest">One condition for this to work: be completely objective with yourself. Not the version you'd give in a meeting, but what's actually true when no one is looking. This is only as sharp as the objectivity you bring to it.</p>
       <p style="margin-top:15px;">And it's going to feel almost too simple. The tools you've been handed to fix this are usually complicated; that's how they justify themselves. The simplicity here isn't a shortcut. It's the whole point. It's what's left once you strip away everything that doesn't work.</p>
       <button class="begin" onclick="begin()">Begin →</button>
     </div>
@@ -129,11 +145,13 @@
         <p class="qtext">"Describe what excellent looks like in your role."</p>
         <p class="qsub">Then say nothing. Let the silence do the work.</p>
       </div>
+      <p class="hint">The only things you add: <b style="color:var(--ink)">"Tell me more about that"</b> when they land on something concrete, or <b style="color:var(--ink)">"What else?"</b> when they finish a thought. The first answer is rarely the real one; the truer answer surfaces a beat later, so give it room.</p>
       <p class="hint">Listen for whether they describe the same thing, concretely: not "good work," but the actual behaviours. When you have your answer, come back and pick up here:</p>
       <div class="choices">
         <button class="choice" onclick="pick('standardtest','pass')">They lined up. My bar's clear.</button>
         <button class="choice" onclick="pick('standardtest','fail')">They didn't line up.</button>
       </div>
+      <button class="print-btn" onclick="window.print()">Print the question to take with you ↗</button>
     </div>
   </div>
 
@@ -141,7 +159,7 @@
   <div class="screen" id="s-belief">
     <div class="card">
       <p class="tag">Beliefs</p>
-      <p class="frame">The bar's clear, and they can do the work. The only question left is whether they do it when no one is watching.</p>
+      <p class="frame">The bar's clear, and they can do the work. The next question to ask is whether they do it when no one is watching.</p>
       <p class="hint">(One gut-check first: if some genuinely couldn't do this even with your help, that's a skill gap, not belief. A training conversation, and a different fix.)</p>
       <div class="qcard">
         <p class="qlabel">Ask yourself</p>
@@ -150,19 +168,22 @@
       <p class="exhead">The kind of moment I mean:</p>
       <div class="exrow flips">
         <div class="flip" id="f1"><div class="flip-inner">
-          <div class="flip-face"><span class="cx">The catch</span>They spot a mistake no one else would ever have caught. Fixing it takes real effort. Fix it, or let it ship?</div>
-          <div class="flip-face flip-back"><span class="cx">The honest flag</span>They realise they got something wrong that no one else noticed. Own it, or let it slide?</div>
+          <div class="flip-face"><span class="cx">The catch</span>They spot a mistake no one else would ever have caught. Fixing it takes real effort.<span class="choiceq">Fix it, or let it ship?</span></div>
+          <div class="flip-face flip-back"><span class="cx">The honest flag</span>They realise they got something wrong that no one else noticed.<span class="choiceq">Own it, or let it slide?</span></div>
         </div></div>
         <div class="flip" id="f2"><div class="flip-inner">
-          <div class="flip-face"><span class="cx">The shortcut</span>A step they could skip, with no one watching and nothing breaking today. Do it right, or take the shortcut?</div>
-          <div class="flip-face flip-back"><span class="cx">The detail</span>A finish is "good enough" but not quite right, and no one will ever inspect it. Make it right, or move on?</div>
+          <div class="flip-face"><span class="cx">The shortcut</span>A step they could skip, with no one watching and nothing breaking today.<span class="choiceq">Do it right, or take the shortcut?</span></div>
+          <div class="flip-face flip-back"><span class="cx">The detail</span>A finish is "good enough" but not quite right, and no one will ever inspect it.<span class="choiceq">Make it right, or move on?</span></div>
         </div></div>
         <div class="flip" id="f3"><div class="flip-inner">
-          <div class="flip-face"><span class="cx">The handoff</span>They're leaving something for the next person. No one tracks the state they leave it in. Set it up well, or just enough?</div>
-          <div class="flip-face flip-back"><span class="cx">The easy version</span>A customer would never know the difference either way. Give them the better version, or the easy one?</div>
+          <div class="flip-face"><span class="cx">The handoff</span>They're leaving something for the next person. No one tracks the state they leave it in.<span class="choiceq">Set it up well, or just enough?</span></div>
+          <div class="flip-face flip-back"><span class="cx">The easy version</span>A customer would never know the difference either way.<span class="choiceq">Give them the better version, or the easy one?</span></div>
         </div></div>
       </div>
-      <p class="listen"><b>What you're looking for:</b> whether reaching beyond good enough gets noticed and valued, or whether it costs the person and changes nothing. Your honest read of that is the answer.</p>
+      <div class="response">
+        <p class="rlabel">Here's what actually tells the story</p>
+        <p>When they <em>do</em> reach beyond good enough, when they choose the harder right that no one asked for, what happens next? Are they seen? Celebrated? Or does it pass unnoticed and cost them? Their honest read of <b>your</b> response is what decides whether their best ever shows up again.</p>
+      </div>
       <div class="choices">
         <button class="choice" onclick="pick('belief','pass')">They're seen and celebrated.</button>
         <button class="choice" onclick="pick('belief','fail')">Overlooked, or honestly I'm not sure.</button>
@@ -192,6 +213,7 @@
         <p class="prompt-line">Setting a standard that holds is one of the most critical, and most misread, moves in an operation. It's a lot of what I do with leadership teams: a keynote, a masterclass, or a longer advisory engagement.</p>
         <a href="https://davidedigiorgio.com/speaking" target="_top" rel="noopener">Explore working with Davide →</a>
       </div>
+      <button class="print-btn" onclick="window.print()">Print this step ↗</button>
       <button class="restart" onclick="restart()">← Start over</button>
     </div>
   </div>
@@ -217,6 +239,7 @@
         <p class="prompt-line">Rebuilding belief is the heart of the work I do with leadership teams: a keynote, a masterclass, or a longer advisory engagement.</p>
         <a href="https://davidedigiorgio.com/speaking" target="_top" rel="noopener">Explore working with Davide →</a>
       </div>
+      <button class="print-btn" onclick="window.print()">Print this step ↗</button>
       <button class="restart" onclick="restart()">← Start over</button>
     </div>
   </div>
@@ -234,9 +257,9 @@
       <p>If your honest answer is "I have great people," that's not an answer. It's luck. And luck doesn't transfer, promote, or scale. It leaves the day that person does, and takes the unnamed system with it.</p>
       <p class="exhead">Luck vs a mechanism you could hand to another team:</p>
       <div class="exrow">
-        <div class="excard"><span class="cx">Developing people</span>"We hire well" (luck). "Every new hire shadows our best for two weeks, then keeps a mentor to go to through their first 90 days" (a mechanism).</div>
-        <div class="excard"><span class="cx">Improving the work</span>"Our team just cares" (luck). "Every project ends with a fifteen-minute what-worked, and those lessons are built into how the next one starts" (a mechanism).</div>
-        <div class="excard"><span class="cx">Across sites</span>"That site's just strong" (luck). "Every location runs the same five-minute pre-shift huddle, every shift" (a mechanism).</div>
+        <div class="excard"><span class="cx">Developing people</span><span class="lm luck">Luck</span>"We hire well."<span class="lm mech">A mechanism</span>"Every new hire shadows our best for two weeks, then keeps a mentor to go to through their first 90 days."</div>
+        <div class="excard"><span class="cx">Improving the work</span><span class="lm luck">Luck</span>"Our team just cares."<span class="lm mech">A mechanism</span>"Every project ends with a fifteen-minute what-worked, and those lessons are built into how the next one starts."</div>
+        <div class="excard"><span class="cx">Across sites</span><span class="lm luck">Luck</span>"That site's just strong."<span class="lm mech">A mechanism</span>"Every location runs the same five-minute pre-shift huddle, every shift."</div>
       </div>
       <div class="step">
         <p class="label">Your next most powerful step</p>
@@ -247,6 +270,7 @@
         <p class="prompt-line">Turning a lottery into a system that survives the people is exactly the work: a keynote, a masterclass, or a longer advisory engagement.</p>
         <a href="https://davidedigiorgio.com/speaking" target="_top" rel="noopener">Explore working with Davide →</a>
       </div>
+      <button class="print-btn" onclick="window.print()">Print this step ↗</button>
       <button class="restart" onclick="restart()">← Start over</button>
     </div>
   </div>
@@ -264,16 +288,15 @@
       dotsWrap.style.display='flex';
       var d=[document.getElementById('d1'),document.getElementById('d2'),document.getElementById('d3')];
       d.forEach(x=>{x.classList.remove('on');x.classList.remove('done');});
-      for(var i=0;i<dotsDone;i++) d[i].classList.add('done');
-      if(dotsDone<3) d[dotsDone].classList.add('on');
+      for(var i=0;i<3;i++){ if(i<dotsDone){d[i].classList.add('done');} else if(i===dotsDone){d[i].classList.add('on');} }
     }
     window.scrollTo({top:0,behavior:'smooth'});
   }
   function begin(){ showScreen('s-standard',0); }
   function pick(gate,outcome){
     if(gate==='standard'){ outcome==='fail'?showScreen('s-standard-test',0):showScreen('s-belief',1); }
-    else if(gate==='standardtest'){ outcome==='fail'?showScreen('r-standard',1):showScreen('s-belief',1); }
-    else if(gate==='belief'){ outcome==='fail'?showScreen('r-belief',2):showScreen('r-good',3); }
+    else if(gate==='standardtest'){ outcome==='fail'?showScreen('r-standard',0):showScreen('s-belief',1); }
+    else if(gate==='belief'){ outcome==='fail'?showScreen('r-belief',1):showScreen('r-good',2); }
   }
   function toggleExp(btn){ btn.nextElementSibling.classList.toggle('on'); }
   function restart(){ var e=document.querySelector('.expand.on'); if(e)e.classList.remove('on'); showScreen('s-intro',null); }
